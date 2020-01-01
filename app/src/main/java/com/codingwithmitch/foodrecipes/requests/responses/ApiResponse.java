@@ -1,6 +1,8 @@
 package com.codingwithmitch.foodrecipes.requests.responses;
 
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import retrofit2.Response;
@@ -11,7 +13,7 @@ import retrofit2.Response;
  * @param <T>
  */
 public class ApiResponse<T> {
-
+    private static final String TAG = "ApiResponse";
     public ApiResponse<T> create(Throwable error){
         return new ApiErrorResponse<>(error.getMessage().equals("") ? error.getMessage() : "Unknown error\nCheck network connection");
     }
@@ -20,7 +22,7 @@ public class ApiResponse<T> {
 
         if(response.isSuccessful()){
             T body = response.body();
-
+            Log.d(TAG, "create: "+body);
             if(body == null || response.code() == 204){ // 204 is empty response
                 return new ApiEmptyResponse<>();
             }

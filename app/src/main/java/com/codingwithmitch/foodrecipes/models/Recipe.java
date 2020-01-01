@@ -37,6 +37,8 @@ public class Recipe implements Parcelable{
     public Recipe(@NonNull String recipe_id, String title, String publisher, String image_url, float social_rank, String[] ingredients, int timestamp) {
         this.recipe_id = recipe_id;
         this.title = title;
+
+        
         this.publisher = publisher;
         this.image_url = image_url;
         this.social_rank = social_rank;
